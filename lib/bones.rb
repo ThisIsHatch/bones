@@ -1,5 +1,5 @@
 require "bones/version"
 
 module Bones
-  # Your code goes here...
+  require 'bones/engine' if defined?(Rails)
 end

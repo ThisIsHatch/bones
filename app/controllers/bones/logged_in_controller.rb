@@ -1,3 +1,3 @@
-class Design::LoggedInController < LoggedInController
+class Bones::LoggedInController < LoggedInController
 
 end

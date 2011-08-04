@@ -1,3 +1,3 @@
-class Design::LoggedOutController < LoggedOutController
+class Bones::LoggedOutController < LoggedOutController
 
 end
