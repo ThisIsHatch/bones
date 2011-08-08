@@ -1,246 +1,251 @@
-      <hr />
-
-      <section class="main-content">
-        <h1>Header 1</h1>
-        <h2>Header 2</h2>
-
-        <p>Lorem ipsum <em>emphasised text</em> dolor sit amet, <strong>strong text</strong>
-        consectetur adipisicing elit, <abbr title="">abbreviated text</abbr> sed do eiusmod tempor
-         incididunt ut labore et dolore magna aliqua. Ut
-        <q>quoted text</q> enim ad minim veniam, quis nostrud exercitation <a href="/">link text</a>
-        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        <ins>inserted text</ins> irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat <code>code text</code> cupidatat
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-      </section>
-
-      <hr>
-
-      <section class="main-content">
-        <%= simple_form_for Example.new, :url => 'design/logged_out/elements' do |f| %>
-        <fieldset>
-          <legend>The example fields generated in the preferred way of the dev team</legend>
-          <%= f.input :optional, :hint => 'A hint to the user about this field' %>
-          <%= f.input :required %>
-          <%= f.input :disabled, :disabled => true %>
-          <%= f.input :error %>
-          <%= f.input :password %>
-          <%= f.input :no_label, :label => false %>
-          <%= f.input :text_area, :as => 'text' %>
-          <%= f.input :check_box %>
-          <%= f.input :radio, :as => 'radio' %>
-          <%= f.input :select_collection, :collection => 10..15, :prompt => 'Choose something' %>
-          <%= f.input :radio_collection, :collection => 10..15, :as => 'radio', :hint => 'Some hint about these radios' %>
-          <%= f.input :check_box_collection, :collection => %w(this that the_other), :as => 'check_boxes' %>
-          <%= f.button :submit %>
-        <% end %>
-        </fieldset>
-      </section>
-
-
-      <hr>
-
-      <section class="main-content">
-        <p>
-        Suspendisse rhoncus, est ac sollicitudin viverra, leo orci sagittis massa, sed condimentum est tortor a lectus. Curabitur porta feugiat ullamcorper. Integer lacinia mi id odio faucibus eget tincidunt nisl iaculis. Nam adipiscing hendrerit turpis, et porttitor felis sollicitudin et. Donec dictum massa ac neque accumsan tempor. Cras aliquam, ipsum sit amet laoreet hendrerit, purus <del>deleted text</del> sapien convallis dui, et porta leo ipsum ac nunc. Nullam ornare porta dui ac semper. Cras aliquam laoreet hendrerit. Quisque vulputate dolor eget mi porta vel porta nisl pretium. Vivamus non leo magna, quis imperdiet risus. Morbi tempor risus placerat tellus imperdiet fringilla.
-        </p>
-
-        <blockquote>
-        <p>I am not one who was born in the possession of knowledge; I am one who is fond of antiquity, and earnest in seeking it there.</p>
-        </blockquote>
-
-        <p><cite><a href="/">Confucius, The Confucian Analects</a></cite>,  (551 BC - 479 BC)</p>
-
-        <p>Extended paragraph. <a href="">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        <h3>H3 Ordered List</h3>
-        <ol>
-        <li>Unus</li>
-        <li>Duo</li>
-        <li>Tres</li>
-        <li>Quattuor</li>
-        </ol>
-
-        <ol>
-          <li>List item</li>
-          <li>List item</li>
-          <li>List item
-            <ol>
-              <li>List item level 2</li>
-              <li>List item level 2
-                <ol>
-                  <li>List item level 3</li>
-                  <li>List item level 3</li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-        </ol>
-
-
-        <h4>H4 Unordered List</h4>
-        <ul>
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipisicing elit</li>
-          <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-          <li>Ut enim ad minim veniam</li>
-        </ul>
-
-        <ul>
-          <li>List item 01</li>
-          <li>List item 02</li>
-          <li>List item 03
-            <ul>
-              <li>List item level 2</li>
-              <li>List item level 2
-                <ul>
-                  <li>List item level 3</li>
-                  <li>List item level 3</li>
-                </ul>
-              </li>
+        <section id="content">
+            <ul class="breadcrumb clearfix">
+                <li><a href="#"><span>Home</span></a></li>
+                <li><a href="#"><span>Shop</span></a></li>
+                <li>Lorem</li>
             </ul>
-          </li>
-        </ul>
+            <header class="page_title clearfix">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p class="sticker">New!</p>
+                <p class="additional">This item is part of the <a href="#">lorem pack</a></p>
+            </header>
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3>Quidquid latine dictum sit, altum sonatur.</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>            
+            
+            <!-- standard html elements: START -->
+                <hr>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
 
+                <section>
+                    <h2>Section</h2>
+                    <article>
+                        <address>Address element, lorem ipsum, dolor sit amet.</address>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                    </article>
+                </section>
 
-        <h5>H5 &lt;pre&gt;&lt;code&gt; Example</h5>
-        <pre><code>body {
-    font:0.8125em/1.618 Arial, sans-serif;
-    background-color:#fff;
-    color:#111;
-  }
-        </code></pre>
+                <h2>Text-level semantics</h2>
 
-        <dl>
-        <dt>Definition list</dt>
-        <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.</dd>
-        <dt>Lorem ipsum dolor sit amet</dt>
-        <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.</dd>
-        </dl>
+                <p>
+                The <a href="#">a element</a> example<br>
+                The <abbr title="Title text">abbr element</abbr> example<br>
+                The <b>b element</b> example<br>
+                The <cite>cite element</cite> example<br>
+                The <code>code element</code> example<br>
+                The <del>del element</del> example<br>
+                The <dfn>dfn element</dfn> example<br>
+                The <em>em element</em> example<br>
+                The <i>i element</i> example<br>
+                The img element <img src="http://placehold.it/16x16" alt=""> example<br>
+                The <ins>ins element</ins> example<br>
+                The <kbd>kbd element</kbd> example<br>
+                The <mark>mark element</mark> example<br>
+                The <q>q element <q>inside</q> a q element</q> example<br>
+                The <s>s element</s> example<br>
+                The <samp>samp element</samp> example<br>
+                The <small>small element</small> example<br>
+                The <span>span element</span> example<br>
+                The <strike>strike element</strike> example<br>
+                The <strong>strong element</strong> example<br>
+                The <sub>sub element</sub> example<br>
+                The <sup>sup element</sup> example<br>
+                The <var>var element</var> example<br>
+                The <u>u element</u> example
+                </p>
+                
+                <p>Lorem ipsum <em>emphasised text</em> dolor sit amet, <strong>strong text</strong> consectetur adipisicing elit, <abbr title="">abbreviated text</abbr> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <q>quoted text</q> enim ad minim veniam, quis nostrud exercitation <a href="/">link text</a> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute <ins>inserted text</ins> irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat <code>code text</code> cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <h6>H6 Tables</h6>
-        <table>
-          <caption>Jimi Hendrix - albums</caption>
-          <thead>
-            <tr>
-              <th>Album</th>
-              <th>Year</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <td>Album</td>
-              <td>Year</td>
-              <td>Price</td>
-            </tr>
-          </tfoot>
-          <tbody>
-            <tr>
-              <td>Are You Experienced </td>
-              <td>1967</td>
-              <td>$10.00</td>
-            </tr>
-            <tr>
-              <td>Axis: Bold as Love</td>
-              <td>1967</td>
-              <td>$12.00</td>
-            </tr>
-            <tr>
-              <td>Electric Ladyland</td>
-              <td>1968</td>
-              <td>$10.00</td>
-            </tr>
-            <tr>
-              <td>Band of Gypsys</td>
-              <td>1970</td>
-              <td>$12.00</td>
-            </tr>
-          <tbody>
-        </table>
+                <h2>Grouping content</h2>
 
-        <p>
-        I am <a href="http://devkick.com/lab/tripoli/sample.php?abc123">the a tag</a> example<br>
+                <h3>pre</h3>
 
-        I am <abbr title="test">the abbr tag</abbr> example<br>
+                <pre>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et me.</pre>
+                <pre>
+<code>&lt;html></code>
+    <code>&lt;head></code>
+    <code>&lt;/head></code>
+    <code>&lt;body></code>
+        <code>&lt;div class="main"> &lt;div></code>
+    <code>&lt;/body></code>
+<code>&lt;/html></code>
+                </pre>
 
-        I am <b>the b tag</b> example<br>
+                <h3>blockquote</h3>
 
-        I am <cite>the cite tag</cite> example<br>
+                <blockquote>
+                    <p>Lorem ipsum &lt;blockquote&gt; and a child &lt;p&gt; element. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </blockquote>
 
-        I am <code>the code tag</code> example<br>
-        I am <del>the del tag</del> example<br>
-        I am <dfn>the dfn tag</dfn> example<br>
+                <h3>ordered list</h3>
 
-        I am <em>the em tag</em> example<br>
+                <ol>
+                    <li>list item 1</li>
+                    <li>list item 1
+                        <ol>
+                            <li>list item 2</li>
+                            <li>list item 2
+                                <ol>
+                                    <li>list item 3</li>
+                                    <li>list item 3</li>
+                                </ol>
+                            </li>
+                            <li>list item 2</li>
+                            <li>list item 2</li>
+                        </ol>
+                    </li>
+                    <li>list item 1</li>
+                    <li>list item 1</li>
+                </ol>
 
-        I am <i>the i tag</i> example<br>
-        I am <ins>the ins tag</ins> example<br>
+                <h3>unordered list</h3>
 
-        I am <kbd>the kbd tag</kbd> example<br>
+                <ul>
+                    <li>list item 1</li>
+                    <li>list item 1
+                        <ul>
+                            <li>list item 2</li>
+                            <li>list item 2
+                                <ul>
+                                    <li>list item 3</li>
+                                    <li>list item 3</li>
+                                </ul>
+                            </li>
+                            <li>list item 2</li>
+                            <li>list item 2</li>
+                        </ul>
+                    </li>
+                    <li>list item 1</li>
+                    <li>list item 1</li>
+                </ul>
 
-        I am <q>the q tag <q>inside</q> a q tag</q> example<br>
-        I am <s>the s tag</s> example<br>
-        I am <samp>the samp tag</samp> example<br>
+                <h3>description list</h3>
 
-        I am <small>the small tag</small> example<br>
-        I am <span>the span tag</span> example<br>
-        I am <strong>the strong tag</strong> example<br>
+                <dl>
+                    <dt>Description name</dt>
+                    <dd>Description value</dd>
+                    <dt>Description name</dt>
+                    <dd>Description value</dd>
+                    <dd>Description value</dd>
+                    <dt>Description name</dt>
+                    <dt>Description name</dt>
+                    <dd>Description value</dd>
+                </dl>
 
-        I am <sub>the sub tag</sub> example<br>
-        I am <sup>the sup tag</sup> example<br>
-        I am <var>the var tag</var> example<br>
+                <h3>img</h3>
 
-        </p>
+                <img src="http://placehold.it/400x200" alt="">
 
-        <p>This is a &lt;p&gt; with some <code>code</code> inside.</p>
+                
+                <h3>figure</h3>
 
-        <address>Address: somewhere, World</address>
+                <figure>
+                    <img src="http://placehold.it/400x200" alt="">
+                    <figcaption>Figcaption content</figcaption>
+                </figure>
+                
+                <hr>
 
-        <p>
-          <a href="#">Link</a><br>
-          <strong>&lt;strong&gt;</strong><br>
-          <del>&lt;del&gt; deleted</del><br>
-          <dfn>&lt;dfn&gt; dfn</dfn><br>
-          <em>&lt;em&gt; emphasis</em>
-        </p>
-      </section>
+                <h2>Forms</h2>
 
-      <hr>
+                <%= simple_form_for Bones::Example.new, :url => '#' do |f| %>
+                <fieldset>
+                  <legend>The example fields generated in the preferred way of the dev team</legend>
+                  <%= f.input :optional, :hint => 'A hint to the user about this field' %>
+                  <%= f.input :required %>
+                  <%= f.input :disabled, :disabled => true %>
+                  <%= f.input :error %>
+                  <%= f.input :password %>
+                  <%= f.input :no_label, :label => false %>
+                  <%= f.input :text_area, :as => 'text' %>
+                  <%= f.input :check_box %>
+                  <%= f.input :radio, :as => 'radio' %>
+                  <%= f.input :select_collection, :collection => 10..15, :prompt => 'Choose something' %>
+                  <%= f.input :radio_collection, :collection => 10..15, :as => 'radio', :hint => 'Some hint about these radios' %>
+                  <%= f.input :check_box_collection, :collection => %w(this that the_other), :as => 'check_boxes' %>
+                  <%= f.button :submit %>
+                </fieldset>
+                <% end %>
 
-      <section class="form">
-        <form action="#">
-          <fieldset>
-            <legend>Form legend for form without the rails wrappers (we probably wont use any like this)</legend>
+                <hr>
+                
+                <h2>table</h2>
 
-            <div><label for="f1">Optional Text input:</label><input type="text" id="f1" value="input text" /></div>
-            <div><label for="rt1">Required Text input:</label><input type="text" id="rt1" required /></div>
-            <div><label for="twp1">Text input with pattern requirement and placeholder:</label><input type="text" pattern="\d{5}(-\d{4})?" title="a US Zip code, with or without the +4 exension" placeholder="12345-6789"/></div>
-            <div><label for="s1">Search input:</label><input type="search" id="s1" /></div>
-            <div><label for="e1">Email input:</label><input type="email" id="e1" /></div>
-            <div><label for="u1">URL input:</label><input type="url" id="u1" /></div>
-            <div><label for="pw">Password input:</label><input type="password" id="pw" value="password" /></div>
-            <div><label for="f2">Radio input:</label><input type="radio" id="f2" /></div>
-
-            <div><label for="f3">Checkbox input:</label><input type="checkbox" id="f3" /></div>
-            <div><label for="f4">Select field:</label><select id="f4"><option>Option 01</option><option>Option 02</option></select></div>
-
-            <div><label for="f5">Textarea:</label><textarea id="f5" cols="30" rows="5" >Textarea text</textarea></div>
-            <div><label for="f6">Input Button:</label> <input type="button" id="f6" value="button text" /></div>
-
-            <div><label for="f7">Submit Button:</label> <input type="submit" id="f7" value="button text" /></div>
-
-          </fieldset>
-
-        </form>
-      </section>
-      
+                <table summary="Lorem ipsum">
+                    <caption>Table Caption</caption>
+                    <thead>
+                        <tr>
+                            <th>Lorem</th>
+                            <th>Ipsum</th>
+                            <th>Dolor</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Lorem</th>
+                            <th>Ipsum</th>
+                            <th>Dolor</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Lorem ipsum dolor sit amet</td>
+                            <td>ABC</td>
+                            <td>123</td>
+                        </tr>
+                        <tr>
+                            <td>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </td>
+                            <td>ABC</td>
+                            <td>123</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem</td>
+                            <td>ABC</td>
+                            <td>123</td>
+                        </tr>
+                        <tr>
+                            <td>Quidquid latine dictum sit, altum sonatur.</td>
+                            <td>ABC</td>
+                            <td>123</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- standard html elements: END -->
+            
+            
+            <!-- pagination: START -->
+            <hr>
+            
+            <h2>Pagination</h2>
+            
+            <div class="clearfix">
+            
+              <%= paginate @pages %>
+            
+            </div>
+        
+            <!-- widgets -->
+            <hr>
+            
+            <h2>Re-usable widgets</h2>
+            
+            <h3>Progress indicator</h3>
+            
+            <div class="progress">
+                <p class="visuallyhidden">Budget Progress:</p>
+                <p class="progress_current" style="margin-left:70%;"><span class="visuallyhidden">You have spent </span>&pound;560</p>            
+                <div class="progress_bg"><div class="progress_fill" style="width:70%;"></div></div>
+                <p class="progress_start">&pound;0</p>
+                <p class="progress_total"><span class="visuallyhidden">Total budget </span>&pound;660</p>
+            </div>
+                        
+            <!-- pagination: END -->
+            
+        </section>
