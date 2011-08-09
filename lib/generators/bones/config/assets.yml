@@ -1,0 +1,33 @@
+javascript_compressor: closure # (yui, closure)
+
+javascripts:
+  common:
+    - public/javascripts/libs/jquery.tools.min.js
+    - public/javascripts/libs/rails.js
+    - public/javascripts/hatch/logger.js
+    - public/javascripts/hatch/plugins.js
+    - public/javascripts/hatch/ajax-error.js
+  development:
+    - public/javascripts/hatch/incomplete.js
+  profiling:
+    - public/javascripts/profiling/config.js
+    - public/javascripts/profiling/yahoo-profiling.min.js
+
+stylesheets:
+  common:
+    - public/stylesheets/lib/reset.css
+    - public/stylesheets/hatch/reset.css
+    - public/stylesheets/application/fonts.css
+    - public/stylesheets/hatch/defaults.css
+    - public/stylesheets/application/global.css
+    - public/stylesheets/lib/helper.css
+    - public/stylesheets/hatch/helper.css
+    - public/stylesheets/application/helper.css
+  development:
+    - public/stylesheets/hatch/incomplete.css
+  print:
+    - public/stylesheets/lib/print.css
+    - public/stylesheets/hatch/print.css
+    - public/stylesheets/application/print.css
+
+      

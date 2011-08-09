@@ -1,0 +1,45 @@
+<!doctype html>  
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<%= render :partial => 'layouts/head' %>
+
+<body>
+
+  <div id="container">
+    <header id="page_head">
+      <div id="page_head_inner" class="clearfix">
+        <img src="/images/application/logo_abrsm_header_8.png" alt="" width="78" height="73" />
+  
+        <div id="navigation">
+        <% if logged_in? %>
+          <%= render :partial => 'logged_in/session_nav' %>
+        <% else %>
+          <%= render :partial => 'logged_out/session_nav' %>
+        <% end %>
+      
+          <%= render(:partial => 'logged_in/main_nav') if logged_in? %>
+        </div>
+        
+        <%= render :partial => 'users/budget_progress' %>
+      </div>
+    </header>
+    
+    
+    <div id="main" role="main">
+      <%= render_flash %>
+      <%= yield %>
+    </div>
+    
+    <footer>
+    </footer>
+  </div> 
+  <!-- end of #container -->
+
+  <%= render :partial => 'layouts/javascripts' %>
+
+</body>
+</html>
