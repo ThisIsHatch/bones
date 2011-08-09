@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'mysql2',             '~>0.2' # 0.2 series compatible with rails 3.0.x series (upgrade to 0.3.x when rails -> 3.1++)
+gem 'mysql2',             '0.2.11' # 0.2 series compatible with rails 3.0.x series (upgrade to 0.3.x when rails -> 3.1++)
 gem 'rails',              '~>3.0'
 
 # Bundle edge Rails instead:
@@ -19,6 +19,9 @@ gem "newrelic_rpm"
 gem 'role_model'
 gem 'simple_form'
 
+gem 'auth_password_reset', :path => 'vendor/gems/auth_password_reset'
+gem 'activator', :path => 'vendor/gems/activator'
+
 group :development do
   gem 'bones', :path => 'vendor/gems/bones'
   gem "engineyard"
@@ -31,6 +34,9 @@ end
 group :test do
   # Capybara is for integration testing
   # FIRST INSTALL THIS http://get.qt.nokia.com/qt/source/qt-mac-opensource-4.7.3.dmg
+  # On Ubuntu Linux, just do: 
+  #   sudo apt-get install libqt4-dev
+  #
   # 
   # https://github.com/jnicklas/capybara
   # http://techiferous.com/2010/04/using-capybara-in-rails-3/
