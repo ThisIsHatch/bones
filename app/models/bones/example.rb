@@ -1,58 +1,38 @@
 module Bones
-  class Example < ActiveRecord::Base
-
-    establish_connection(:adapter => "sqlite3", :database => ":memory:")
-  
-    after_initialize :add_error_message_to_field
-
-    ActiveRecord::Migration.class_eval do
-
-      def self.connection
-        Example.connection
-      end
-
-      create_table :examples, :force => true do |t|
-        t.timestamps
-        t.string    :email
-        t.string    :password
-        t.string    :required
-        t.string    :optional
-        t.string    :disabled
-        t.string    :error
-        t.string    :no_label
-        t.text      :text_area
-        t.boolean   :check_box, :default => true
-        t.boolean   :radio, :default => true
-        t.string    :radio_collection
-        t.string    :check_box_collection
-        t.string    :select_collection
-      end
+  class Example 
     
+    include ActiveModel::Conversion
+    include ActiveModel::Validations
+
+    attr_accessor :id
+    attr_accessor :email
+    attr_accessor :password
+    attr_accessor :required
+    attr_accessor :optional
+    attr_accessor :disabled
+    attr_accessor :error
+    attr_accessor :no_label
+    attr_accessor :text_area
+    attr_accessor :check_box
+    attr_accessor :radio
+    attr_accessor :radio_collection
+    attr_accessor :check_box_collection
+    attr_accessor :select_collection
+
+    validates :required, :presence => true
+      
+    def initialize(*args)
+      super
+      add_error_message_to_field
     end
-
-  
-    paginates_per 5
-  
-    validates_presence_of :required
-    
+      
     def add_error_message_to_field
       self.errors.add :error, 'Has a validation error message'
     end
-
-  end
-  
-  
-  module ExamplePagination
-
-    def wibble
-      where(:required => 'Yep').order(:email)
-    end
     
+    def persisted?; true; end
+
   end
-  
-  Example.extend(Bones::ExamplePagination)
-  
-  50.times { |n| Bones::Example.create(:required => 'Yep', :email => "email-#{n}@example.com") }
   
 end if Rails.env == 'development'
 

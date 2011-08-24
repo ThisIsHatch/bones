@@ -1,4 +1,3 @@
-Rails.application.routes.draw do |map|
+Rails.application.routes.draw do
   match ':controller(/:action(/:id(.:format)))', :controller => /bones\/[^\/]+/
-  # match ':controller(/:action(/:id(.:format)))', :controller => /design\/[^\/]+/
 end
