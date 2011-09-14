@@ -34,7 +34,7 @@ module Bones
 
   end
   
-end if Rails.env == 'development'
+end if ['development', 'test'].include?(Rails.env)
 
 # == Schema Information
 #
