@@ -1,0 +1,10 @@
+Description:
+    This creates Hatch's standard spec templates for use with the scaffold generator. Once run the
+    scaffold will generate Hatch's standard controller and specs leaving far less to be customised.
+
+Example:
+    rails generate install user manager admin
+
+    This will create:
+      lib/templates/rails/scaffold_controller/controller.rb
+      lib/templates/rspec/scaffold/controller_spec.rb

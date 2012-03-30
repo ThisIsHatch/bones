@@ -1,0 +1,197 @@
+require 'spec_helper'
+
+describe <%%= controller_class_name %>Controller do
+
+  setup :activate_authlogic 
+  
+  describe 'a logged out user' do
+    
+    setup :logout
+    
+    describe 'on GET index' do
+      before do
+        get :index
+      end
+
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+    
+    describe 'on GET show' do
+      before do
+        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        
+        get :show , :id => @<%%= file_name %>.to_param
+      end
+
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+    
+    describe 'on GET new' do
+      before do
+        get :new
+      end
+    
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+    
+    describe 'on POST create' do
+      before do
+        post :create, :<%%= file_name -%> => {}
+      end
+    
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+    
+    describe 'on GET edit' do
+      before do
+        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        
+        get :edit, :id => @<%%= file_name %>.to_param
+      end
+    
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+    
+    describe 'on PUT update' do
+      before do
+        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        
+        put :update, :id => @<%%= orm_instance.to_param -%>, :<%%= file_name -%> => {}
+      end
+    
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+ 
+    describe 'on DELETE destroy' do
+      before do
+        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        
+        delete :destroy, :id => @<%%= file_name %>.to_param
+      end
+    
+      it { should respond_with :redirect }
+      it { should set_the_flash.to(/must.*logged.*in/i) }
+      it { should redirect_to :login }
+    end
+     
+  end
+  # Logged out user
+
+  # <%= roles.map(&:humanize).join(', ') %>
+  [:<%= roles.join(', :') %>].each do |role|
+
+    describe "a logged in #{role}" do 
+
+      before { login_with(role) }
+
+      describe 'on GET index' do
+        before do
+          @<%%= table_name %> = 2.times.map { Factory.create(:<%%= file_name %>) }
+
+          get :index
+        end
+
+        it { should respond_with :success }
+        it { should render_template :index }
+        it { should assign_to(:<%%= table_name %>).with(@<%%= table_name %>) }
+      end
+      # GET index
+  
+      describe 'on GET show' do
+        
+        before do
+          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+  
+          get :show, :id => @<%%= file_name %>.to_param
+        end
+        
+        it { should respond_with :success }
+        it { should render_template :show }
+        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+      end
+      # GET show
+  
+      describe 'on GET new' do
+        before do
+          @<%%= file_name %> = Factory.build(:<%%= file_name %>)
+          stub(<%%= class_name %>).new { @<%%= file_name %> }
+
+          get :new
+        end
+
+        it { should respond_with :success }
+        it { should render_template :new }
+        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+      end
+
+      describe 'on POST create' do
+        
+        before do
+          post :create, :<%%= file_name %> => {}
+        end
+  
+        it { should respond_with :redirect }
+        it { should set_the_flash.to(/not.*authorized/i) }
+        it { should redirect_to :dashboard }  
+      end
+      # POST create
+
+      describe 'on GET edit' do
+        before do
+          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+  
+          get :edit, :id => @<%%= file_name %>.to_param
+        end
+      
+        it { should respond_with :redirect }
+        it { should set_the_flash.to(/not.*authorized/i) }
+        it { should redirect_to :dashboard }
+      end
+      # GET edit
+    
+      describe "on PUT :update" do
+        
+        before do
+          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+            
+          put :update, :id => @<%%= file_name %>.to_param, :product => {}
+        end
+  
+        it { should respond_with :redirect }
+        it { should set_the_flash.to(/not.*authorized/i) }
+        it { should redirect_to :dashboard }
+      end
+      # PUT update
+      
+      describe "on DELETE :destroy" do
+        
+        before do
+          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+            
+          delete :destroy, :id => @<%%= file_name %>.to_param
+        end
+  
+        it { should respond_with :redirect }
+        it { should set_the_flash.to(/not.*authorized/i) }
+        it { should redirect_to :dashboard }
+      end
+      # DELETE destroy
+  
+    end
+  
+  end
+  # <%= roles.map(&:humanize).join(', ') %>
+    
+end
