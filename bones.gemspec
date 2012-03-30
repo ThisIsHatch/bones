@@ -9,8 +9,9 @@ Gem::Specification.new do |s|
   s.authors     = ["James McCarthy"]
   s.email       = ["james2mccarthy@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Adds some tools to speed up the development process}
+  s.description = %q{Adds template actions under bones/logged_out/ and bones/logged_in for front end devs to create static templates
+ and adds updates generators to create hatch standard files including kaminari views and rspec scaffold.}
 
   s.rubyforge_project = "bones"
 
