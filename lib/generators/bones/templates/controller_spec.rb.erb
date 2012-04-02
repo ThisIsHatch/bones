@@ -20,7 +20,7 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on GET show' do
       before do
-        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
         
         get :show , :id => @<%%= file_name %>.to_param
       end
@@ -52,7 +52,7 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on GET edit' do
       before do
-        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
         
         get :edit, :id => @<%%= file_name %>.to_param
       end
@@ -64,7 +64,7 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on PUT update' do
       before do
-        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
         
         put :update, :id => @<%%= orm_instance.to_param -%>, :<%%= file_name -%> => {}
       end
@@ -76,7 +76,7 @@ describe <%%= controller_class_name %>Controller do
  
     describe 'on DELETE destroy' do
       before do
-        @<%%= file_name -%> = Factory.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
         
         delete :destroy, :id => @<%%= file_name %>.to_param
       end
@@ -98,7 +98,7 @@ describe <%%= controller_class_name %>Controller do
 
       describe 'on GET index' do
         before do
-          @<%%= table_name %> = 2.times.map { Factory.create(:<%%= file_name %>) }
+          @<%%= table_name %> = 2.times.map { FactoryGirl.create(:<%%= file_name %>) }
 
           get :index
         end
@@ -112,7 +112,7 @@ describe <%%= controller_class_name %>Controller do
       describe 'on GET show' do
         
         before do
-          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
   
           get :show, :id => @<%%= file_name %>.to_param
         end
@@ -125,7 +125,7 @@ describe <%%= controller_class_name %>Controller do
   
       describe 'on GET new' do
         before do
-          @<%%= file_name %> = Factory.build(:<%%= file_name %>)
+          @<%%= file_name %> = FactoryGirl.build(:<%%= file_name %>)
           stub(<%%= class_name %>).new { @<%%= file_name %> }
 
           get :new
@@ -150,7 +150,7 @@ describe <%%= controller_class_name %>Controller do
 
       describe 'on GET edit' do
         before do
-          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
   
           get :edit, :id => @<%%= file_name %>.to_param
         end
@@ -164,7 +164,7 @@ describe <%%= controller_class_name %>Controller do
       describe "on PUT :update" do
         
         before do
-          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
             
           put :update, :id => @<%%= file_name %>.to_param, :product => {}
         end
@@ -178,7 +178,7 @@ describe <%%= controller_class_name %>Controller do
       describe "on DELETE :destroy" do
         
         before do
-          @<%%= file_name %> = Factory.create(:<%%= file_name %>)
+          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
             
           delete :destroy, :id => @<%%= file_name %>.to_param
         end
