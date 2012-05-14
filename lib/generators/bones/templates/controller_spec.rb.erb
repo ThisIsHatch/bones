@@ -20,7 +20,7 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on GET show' do
       before do
-        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = create(:<%%= file_name -%>)
         
         get :show , :id => @<%%= file_name %>.to_param
       end
@@ -52,7 +52,7 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on GET edit' do
       before do
-        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = create(:<%%= file_name -%>)
         
         get :edit, :id => @<%%= file_name %>.to_param
       end
@@ -64,9 +64,9 @@ describe <%%= controller_class_name %>Controller do
     
     describe 'on PUT update' do
       before do
-        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = create(:<%%= file_name -%>)
         
-        put :update, :id => @<%%= orm_instance.to_param -%>, :<%%= file_name -%> => {}
+        put :update, :id => @<%%= file_name -%>.to_param, :<%%= file_name -%> => {}
       end
     
       it { should respond_with :redirect }
@@ -76,7 +76,7 @@ describe <%%= controller_class_name %>Controller do
  
     describe 'on DELETE destroy' do
       before do
-        @<%%= file_name -%> = FactoryGirl.create(:<%%= file_name -%>)
+        @<%%= file_name -%> = create(:<%%= file_name -%>)
         
         delete :destroy, :id => @<%%= file_name %>.to_param
       end
@@ -98,7 +98,7 @@ describe <%%= controller_class_name %>Controller do
 
       describe 'on GET index' do
         before do
-          @<%%= table_name %> = 2.times.map { FactoryGirl.create(:<%%= file_name %>) }
+          @<%%= table_name %> = 2.times.map { create(:<%%= file_name %>) }
 
           get :index
         end
@@ -112,7 +112,7 @@ describe <%%= controller_class_name %>Controller do
       describe 'on GET show' do
         
         before do
-          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
+          @<%%= file_name %> = create(:<%%= file_name %>)
   
           get :show, :id => @<%%= file_name %>.to_param
         end
@@ -125,7 +125,7 @@ describe <%%= controller_class_name %>Controller do
   
       describe 'on GET new' do
         before do
-          @<%%= file_name %> = FactoryGirl.build(:<%%= file_name %>)
+          @<%%= file_name %> = build :<%%= file_name %>
           stub(<%%= class_name %>).new { @<%%= file_name %> }
 
           get :new
@@ -137,55 +137,116 @@ describe <%%= controller_class_name %>Controller do
       end
 
       describe 'on POST create' do
-        
+
         before do
-          post :create, :<%%= file_name %> => {}
+          @<%%= file_name %> = build :<%%= file_name %>
+          stub(<%%= class_name -%>).new { @<%%= file_name %> }
+        end
+
+        describe "on failed save" do
+
+          before do
+            any_instance_of(<%%= class_name -%>) do
+              stub(<%%= class_name -%>).save { false }
+            end
+            
+            post :create, :<%%= file_name %> => {}
+          end
+  
+          it { should respond_with :success }
+          it { should render_template :new }
+          it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
         end
   
-        it { should respond_with :redirect }
-        it { should set_the_flash.to(/not.*authorized/i) }
-        it { should redirect_to :dashboard }  
+        describe "on successful save" do
+  
+          before do
+            post :create, :<%%= file_name %> => {}
+          end
+  
+          it {should redirect_to @<%%= file_name %>}
+          it { should set_the_flash.to(/created/i) }
+        end
       end
       # POST create
 
       describe 'on GET edit' do
         before do
-          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
+          @<%%= file_name %> = create :<%%= file_name %>
   
           get :edit, :id => @<%%= file_name %>.to_param
         end
       
-        it { should respond_with :redirect }
-        it { should set_the_flash.to(/not.*authorized/i) }
-        it { should redirect_to :dashboard }
+        it { should respond_with :success }
+        it { should render_template(:edit) }
+        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
       end
       # GET edit
     
       describe "on PUT :update" do
         
         before do
-          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
-            
-          put :update, :id => @<%%= file_name %>.to_param, :product => {}
+          @<%%= file_name %> = create :<%%= file_name %>
         end
   
-        it { should respond_with :redirect }
-        it { should set_the_flash.to(/not.*authorized/i) }
-        it { should redirect_to :dashboard }
+        describe "on failed update" do
+  
+          before do
+            any_instance_of(<%%= class_name -%>) do
+              stub(<%%= class_name -%>).update_attributes { false }
+            end
+            
+            put :update, :id => @<%%= file_name %>.to_param, :<%%= file_name %> => {}
+          end
+  
+          it { should respond_with :success }
+          it { should render_template :edit }
+          it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+        end
+  
+        describe "on successful update" do
+  
+          before do
+            put :update, :id => @<%%= file_name %>.to_param, :<%%= file_name %> => {}
+          end
+  
+          it {should redirect_to(:action => 'show')}
+          it { should set_the_flash.to(/updated/i) }
+        end
       end
       # PUT update
       
       describe "on DELETE :destroy" do
         
         before do
-          @<%%= file_name %> = FactoryGirl.create(:<%%= file_name %>)
+          @<%%= file_name %> = create(:<%%= file_name %>)
             
           delete :destroy, :id => @<%%= file_name %>.to_param
         end
   
-        it { should respond_with :redirect }
-        it { should set_the_flash.to(/not.*authorized/i) }
-        it { should redirect_to :dashboard }
+        describe "on failed destroy" do
+  
+          before do
+            any_instance_of(<%%= class_name -%>) do 
+              stub(<%%= class_name -%>).destroy { false }
+            end
+            
+            delete :destroy, :id => @<%%= file_name %>.to_param
+          end
+  
+          it { should redirect_to :<%%= table_name %> }
+          it { should set_the_flash.to(/failed/i) }
+        end
+  
+        describe "on successful destroy" do
+  
+          before do
+            delete :destroy, :id => @<%%= file_name %>.to_param
+          end
+  
+          it { should redirect_to :<%%= table_name %> }
+          it { should set_the_flash.to(/deleted/i) }
+        end
       end
       # DELETE destroy
   
