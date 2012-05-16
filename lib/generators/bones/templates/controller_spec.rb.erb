@@ -9,9 +9,8 @@ describe <%%= controller_class_name %>Controller do
     setup :logout
     
     describe 'on GET index' do
-      before do
-        get :index
-      end
+
+      before { get :index }
 
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -19,11 +18,10 @@ describe <%%= controller_class_name %>Controller do
     end
     
     describe 'on GET show' do
-      before do
-        @<%%= file_name -%> = create(:<%%= file_name -%>)
-        
-        get :show , :id => @<%%= file_name %>.to_param
-      end
+
+      let(:<%%= file_name %>) { create :<%%= file_name %> }
+
+      before { get :show , :id => <%%= file_name %>.to_param }
 
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -31,9 +29,8 @@ describe <%%= controller_class_name %>Controller do
     end
     
     describe 'on GET new' do
-      before do
-        get :new
-      end
+
+      before {  get :new }
     
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -41,9 +38,8 @@ describe <%%= controller_class_name %>Controller do
     end
     
     describe 'on POST create' do
-      before do
-        post :create, :<%%= file_name -%> => {}
-      end
+    
+      before { post :create, :<%%= file_name -%> => {} }
     
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -51,11 +47,10 @@ describe <%%= controller_class_name %>Controller do
     end
     
     describe 'on GET edit' do
-      before do
-        @<%%= file_name -%> = create(:<%%= file_name -%>)
-        
-        get :edit, :id => @<%%= file_name %>.to_param
-      end
+
+      let(:<%%= file_name %>) { create :<%%= file_name %> }
+      
+      before { get :edit, :id => <%%= file_name %>.to_param }
     
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -63,10 +58,11 @@ describe <%%= controller_class_name %>Controller do
     end
     
     describe 'on PUT update' do
+
+      let(:<%%= file_name %>) { create :<%%= file_name %> }
+
       before do
-        @<%%= file_name -%> = create(:<%%= file_name -%>)
-        
-        put :update, :id => @<%%= file_name -%>.to_param, :<%%= file_name -%> => {}
+        put :update, :id => <%%= file_name -%>.to_param, :<%%= file_name -%> => {}
       end
     
       it { should respond_with :redirect }
@@ -75,11 +71,10 @@ describe <%%= controller_class_name %>Controller do
     end
  
     describe 'on DELETE destroy' do
-      before do
-        @<%%= file_name -%> = create(:<%%= file_name -%>)
-        
-        delete :destroy, :id => @<%%= file_name %>.to_param
-      end
+
+      let(:<%%= file_name %>) { create :<%%= file_name %> }
+
+      before { delete :destroy, :id => <%%= file_name %>.to_param }
     
       it { should respond_with :redirect }
       it { should set_the_flash.to(/must.*logged.*in/i) }
@@ -97,50 +92,46 @@ describe <%%= controller_class_name %>Controller do
       before { login_with(role) }
 
       describe 'on GET index' do
-        before do
-          @<%%= table_name %> = 2.times.map { create(:<%%= file_name %>) }
-
-          get :index
-        end
+      
+        let(:<%%= file_name %>) { 2.times.map { create :<%%= file_name %> } }
+        
+        before { get :index }
 
         it { should respond_with :success }
         it { should render_template :index }
-        it { should assign_to(:<%%= table_name %>).with(@<%%= table_name %>) }
+        it { should assign_to(:<%%= table_name %>).with(<%%= table_name %>) }
       end
       # GET index
   
       describe 'on GET show' do
         
-        before do
-          @<%%= file_name %> = create(:<%%= file_name %>)
-  
-          get :show, :id => @<%%= file_name %>.to_param
-        end
+        let(:<%%= file_name %>) { create :<%%= file_name %> }
+        
+        before { get :show, :id => <%%= file_name %>.to_param }
         
         it { should respond_with :success }
         it { should render_template :show }
-        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+        it { should assign_to(:<%%= file_name %>).with(<%%= file_name %>) }
       end
       # GET show
   
       describe 'on GET new' do
-        before do
-          @<%%= file_name %> = build :<%%= file_name %>
-          stub(<%%= class_name %>).new { @<%%= file_name %> }
 
-          get :new
-        end
+        let(:<%%= file_name %>) { build :<%%= file_name %> }
+        
+        before { get :new }
 
         it { should respond_with :success }
         it { should render_template :new }
-        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+        it { should assign_to(:<%%= file_name %>).with(<%%= file_name %>) }
       end
 
       describe 'on POST create' do
 
+        let(:<%%= file_name %>) { build :<%%= file_name %> }
+        
         before do
-          @<%%= file_name %> = build :<%%= file_name %>
-          stub(<%%= class_name -%>).new { @<%%= file_name %> }
+          stub(<%%= class_name -%>).new { <%%= file_name %> }
         end
 
         describe "on failed save" do
@@ -155,39 +146,34 @@ describe <%%= controller_class_name %>Controller do
   
           it { should respond_with :success }
           it { should render_template :new }
-          it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+          it { should assign_to(:<%%= file_name %>).with(<%%= file_name %>) }
         end
   
         describe "on successful save" do
   
-          before do
-            post :create, :<%%= file_name %> => {}
-          end
+          before { post :create, :<%%= file_name %> => {} }
   
-          it {should redirect_to @<%%= file_name %>}
+          it {should redirect_to <%%= file_name %>}
           it { should set_the_flash.to(/created/i) }
         end
       end
       # POST create
 
       describe 'on GET edit' do
-        before do
-          @<%%= file_name %> = create :<%%= file_name %>
-  
-          get :edit, :id => @<%%= file_name %>.to_param
-        end
+      
+        let(:<%%= file_name %>) { create :<%%= file_name %> }
+      
+        before { get :edit, :id => <%%= file_name %>.to_param }
       
         it { should respond_with :success }
         it { should render_template(:edit) }
-        it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+        it { should assign_to(:<%%= file_name %>).with(<%%= file_name %>) }
       end
       # GET edit
     
       describe "on PUT :update" do
         
-        before do
-          @<%%= file_name %> = create :<%%= file_name %>
-        end
+        let(:<%%= file_name %>) { create :<%%= file_name %> }
   
         describe "on failed update" do
   
@@ -196,18 +182,18 @@ describe <%%= controller_class_name %>Controller do
               stub(<%%= class_name -%>).update_attributes { false }
             end
             
-            put :update, :id => @<%%= file_name %>.to_param, :<%%= file_name %> => {}
+            put :update, :id => <%%= file_name %>.to_param, :<%%= file_name %> => {}
           end
   
           it { should respond_with :success }
           it { should render_template :edit }
-          it { should assign_to(:<%%= file_name %>).with(@<%%= file_name %>) }
+          it { should assign_to(:<%%= file_name %>).with(<%%= file_name %>) }
         end
   
         describe "on successful update" do
   
           before do
-            put :update, :id => @<%%= file_name %>.to_param, :<%%= file_name %> => {}
+            put :update, :id => <%%= file_name %>.to_param, :<%%= file_name %> => {}
           end
   
           it {should redirect_to(:action => 'show')}
@@ -218,11 +204,7 @@ describe <%%= controller_class_name %>Controller do
       
       describe "on DELETE :destroy" do
         
-        before do
-          @<%%= file_name %> = create(:<%%= file_name %>)
-            
-          delete :destroy, :id => @<%%= file_name %>.to_param
-        end
+        let(:<%%= file_name %>) { create :<%%= file_name %> }
   
         describe "on failed destroy" do
   
@@ -231,7 +213,7 @@ describe <%%= controller_class_name %>Controller do
               stub(<%%= class_name -%>).destroy { false }
             end
             
-            delete :destroy, :id => @<%%= file_name %>.to_param
+            delete :destroy, :id => <%%= file_name %>.to_param
           end
   
           it { should redirect_to :<%%= table_name %> }
@@ -240,9 +222,7 @@ describe <%%= controller_class_name %>Controller do
   
         describe "on successful destroy" do
   
-          before do
-            delete :destroy, :id => @<%%= file_name %>.to_param
-          end
+          before { delete :destroy, :id => <%%= file_name %>.to_param }
   
           it { should redirect_to :<%%= table_name %> }
           it { should set_the_flash.to(/deleted/i) }
