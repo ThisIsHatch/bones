@@ -12,8 +12,8 @@
             <h2>Lorem ipsum</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <h3>Quidquid latine dictum sit, altum sonatur.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>            
-            
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
             <!-- standard html elements: START -->
                 <hr>
                 <h1>Heading 1</h1>
@@ -60,7 +60,7 @@
                 The <var>var element</var> example<br>
                 The <u>u element</u> example
                 </p>
-                
+
                 <p>Lorem ipsum <em>emphasised text</em> dolor sit amet, <strong>strong text</strong> consectetur adipisicing elit, <abbr title="">abbreviated text</abbr> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut <q>quoted text</q> enim ad minim veniam, quis nostrud exercitation <a href="/">link text</a> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute <ins>inserted text</ins> irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat <code>code text</code> cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <h2>Grouping content</h2>
@@ -143,17 +143,18 @@
 
                 <img src="http://placehold.it/400x200" alt="">
 
-                
+
                 <h3>figure</h3>
 
                 <figure>
                     <img src="http://placehold.it/400x200" alt="">
                     <figcaption>Figcaption content</figcaption>
                 </figure>
-                
+
                 <hr>
 
                 <h2>Forms</h2>
+              <% if defined?(SimpleForm) %>
 
                 <%= simple_form_for Bones::Example.new, :url => '#' do |f| %>
                 <fieldset>
@@ -174,8 +175,29 @@
                 </fieldset>
                 <% end %>
 
+              <% elsif false %>
+                <%= form_for Bones::Example.new, :url => '#' do |f| %>
+                <fieldset>
+                  <legend>The example fields generated in the preferred way of the dev team</legend>
+                  <%= f.input :optional, :hint => 'A hint to the user about this field' %>
+                  <%= f.input :required %>
+                  <%= f.input :disabled, :disabled => true %>
+                  <%= f.input :error %>
+                  <%= f.input :password %>
+                  <%= f.input :no_label, :label => false %>
+                  <%= f.input :text_area, :as => 'text' %>
+                  <%= f.input :check_box, :as => 'boolean' %>
+                  <%= f.input :radio, :as => 'radio' %>
+                  <%= f.input :select_collection, :collection => 10..15, :prompt => 'Choose something' %>
+                  <%= f.input :radio_collection, :collection => 10..15, :as => 'radio', :hint => 'Some hint about these radios' %>
+                  <%= f.input :check_box_collection, :collection => %w(this that the_other), :as => 'check_boxes' %>
+                  <%= f.button :submit %>
+                </fieldset>
+                <% end %>
+              <% end %>
+
                 <hr>
-                
+
                 <h2>table</h2>
 
                 <table summary="Lorem ipsum">
@@ -218,35 +240,36 @@
                     </tbody>
                 </table>
             <!-- standard html elements: END -->
-            
-            
+
+          <% if @pages %>
             <!-- pagination: START -->
             <hr>
-            
+
             <h2>Pagination</h2>
-            
+
             <div class="clearfix">
-            
+
               <%= paginate @pages %>
-            
+
             </div>
             <!-- pagination: END -->
-        
+          <% end %>
+
             <!-- widgets -->
             <hr>
-            
+
             <h2>Re-usable widgets</h2>
-            
+
             <h3>Progress indicator</h3>
-            
+
             <div class="progress">
                 <p class="visuallyhidden">Budget Progress:</p>
-                <p class="progress_current" style="margin-left:70%;"><span class="visuallyhidden">You have spent </span>&pound;560</p>            
+                <p class="progress_current" style="margin-left:70%;"><span class="visuallyhidden">You have spent </span>&pound;560</p>
                 <div class="progress_bg"><div class="progress_fill" style="width:70%;"></div></div>
                 <p class="progress_start">&pound;0</p>
                 <p class="progress_total"><span class="visuallyhidden">Total budget </span>&pound;660</p>
             </div>
-                        
+
             <!-- widgets: END -->
-            
+
         </section>

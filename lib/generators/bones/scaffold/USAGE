@@ -3,8 +3,8 @@ Description:
     scaffold will generate Hatch's standard controller and specs leaving far less to be customised.
 
 Example:
-    rails generate install user manager admin
+    rails generate bones:scaffold user manager admin
 
-    This will create:
+    Will generate:
       lib/templates/rails/scaffold_controller/controller.rb
       lib/templates/rspec/scaffold/controller_spec.rb

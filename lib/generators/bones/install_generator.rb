@@ -1,15 +1,15 @@
+require 'rails/generators/base'
+
 module Bones
   module Generators
 
     class InstallGenerator < Rails::Generators::Base
-      source_root File.expand_path('../templates', __FILE__)
-      argument :roles, :type => :array, :default => ["admin"], :desc => 'The roles to create controller specs for in the template'
-    
-      def copy_controller_file
-        copy_file "controller.rb", "lib/templates/rails/scaffold_controller/controller.rb"
-        template "controller_spec.rb.erb", "lib/templates/rspec/scaffold/controller_spec.rb"
-      end
+      source_root File.expand_path('../../templates', __FILE__)
+      desc 'Bones Rails Install'
 
+      def install_steps
+        route "mount Bones::Engine => '/bones' unless Rails.env.production?"
+      end
     end
   end
 end

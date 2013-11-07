@@ -1,3 +1,4 @@
-Rails.application.routes.draw do
-  match ':controller(/:action(/:id(.:format)))', :controller => /bones\/[^\/]+/
+Bones::Engine.routes.draw do
+  get '(:action(.:format))', :controller => 'bones'
+  get 'elements' => 'bones/elements'
 end
