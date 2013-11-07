@@ -19,4 +19,21 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  s.post_install_message = %q{
+  ================================================================================
+
+  Welcome to Bones
+  ----------------
+  You now need to create the files to get you going
+
+    $ rails g bones:install
+
+  If you are going to use the hatch default controllers and specs which are pretty
+  useful :)
+
+    $ rails g bones:scaffold
+
+  ================================================================================
+  }
+
 end
