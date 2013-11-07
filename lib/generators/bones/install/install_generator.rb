@@ -10,6 +10,7 @@ module Bones
       def install_steps
         route "mount Bones::Engine => '/bones' unless Rails.env.production?"
         copy_file 'example.html.erb', 'app/views/bones/wireframes/example.html.erb'
+        copy_file 'components.html.erb', 'app/views/bones/components/index.html.erb'
       end
     end
   end
