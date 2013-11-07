@@ -1,4 +1,4 @@
-class Bones::ElementsController < ApplicationController
+class Bones::ComponentsController < ApplicationController
 
   def index
     if  defined?(Kaminari)

@@ -1,4 +1,4 @@
 Bones::Engine.routes.draw do
-  get '(:action(.:format))', :controller => 'bones'
-  get 'elements' => 'bones/elements'
+  get 'components' => 'components#index'
+  get '(:action(.:format))', :controller => 'wireframes'
 end
