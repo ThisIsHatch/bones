@@ -1,6 +1,6 @@
 module Bones
-  class Example 
-    
+  class Example
+
     include ActiveModel::Conversion
     include ActiveModel::Validations
 
@@ -20,21 +20,21 @@ module Bones
     attr_accessor :select_collection
 
     validates :required, :presence => true
-      
+
     def initialize(*args)
       super
       add_error_message_to_field
     end
-      
+
     def add_error_message_to_field
       self.errors.add :error, 'Has a validation error message'
     end
-    
+
     def persisted?; true; end
 
   end
-  
-end if ['development', 'test'].include?(Rails.env)
+
+end unless Rails.env.production?
 
 # == Schema Information
 #
