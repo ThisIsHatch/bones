@@ -1,55 +1,88 @@
 module Bones
   class PersistedObject
 
-    extend ActiveModel::Naming
-    include ActiveModel::Conversion
-    include ActiveModel::Validations
+    def self.new(name, params={})
+      klass_for(name).new(params)
+    end
 
-    # TODO find a way to get or set the persisted object if there are no params don't set them.
-    def self.get(name, params={})
-      klass_name = name.camelize
-      klass = begin
+    def self.find_or_create(name, params={})
+      find(name) || create(name, params)
+    end
+
+    def self.find(name)
+      klass_for(name).first
+    end
+
+    def self.create(name, params={})
+      klass_for(name).create(params)
+    end
+
+    def self.klass_for(name)
+      begin
+        klass_name = name.camelize
         klass_name.constantize
       rescue
-        klass = Object.const_set(klass_name, Class.new(self))
+        klass = Object.const_set(klass_name, Class.new(Base))
         klass.send :instance_variable_set, "@_model_name", ActiveModel::Name.new(klass, false, klass_name)
         klass
-      end.new(params)
-    end
-
-    def self.object=(object)
-      @object = object
-    end
-
-    def self.object
-      @object ||= new
-    end
-
-    def self.new(*args)
-      @object = super
-    end
-
-    def self.first; object; end
-    def self.last; object; end
-    def self.find; object; end
-
-    # TODO check out how the attirbutes are created in ActiveModel. I'm sure there is a method
-    # for it that does more than attr_accessor.
-    def attributes; @attributes ||= {}; end
-
-    def initialize(params={})
-      params.each_pair do |attribute, value|
-        @attributes[attribute] = define_attribute_accessor attribute, value
       end
     end
 
-    def define_attribute_accessor(attribute, value)
-      singleton_class.send :attr_accessor, attribute
-      instance_variable_set("@#{attribute}", value)
-    end
+    class Base
 
-    def persisted?
-      self.class.first == self
+      extend ActiveModel::Naming
+      include ActiveModel::Conversion
+      include ActiveModel::Validations
+
+      def self.first; @object; end
+      def self.last; @object; end
+      def self.find; @object; end
+
+      def self.create(attributes)
+        new(attributes).save
+      end
+
+      def save
+        self.class.send :instance_variable_set, '@object', self
+      end
+
+      def attributes; @attributes ||= {}; end
+
+      def initialize(params={})
+        params.each_pair do |attribute, value|
+          create_and_set_attribute attribute, value
+        end
+      end
+
+      def create_and_set_attribute(attribute, value=nil)
+        define_attribute_accessor attribute
+        attributes[attribute] = value
+      end
+
+      def define_attribute_accessor(attribute)
+        attribute_setter = "#{attribute}="
+
+        singleton_class.send :define_method, attribute do
+          attributes[attribute]
+        end
+
+        singleton_class.send :define_method, attribute_setter do |value|
+          attributes[attribute] = value
+        end
+      end
+
+      def method_missing(name, *args)
+        if name =~ /(\w*)=$/
+          create_and_set_attribute $1, *args
+        else
+          create_and_set_attribute(name)
+        end
+      end
+
+      def persisted?
+        self.class.first == self
+      end
+
     end
 
   end
