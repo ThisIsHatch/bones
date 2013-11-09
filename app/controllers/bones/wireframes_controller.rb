@@ -4,7 +4,7 @@ class Bones::WireframesController < ApplicationController
   before_filter :initialize_persisted_object
 
   def initialize_persisted_object
-    object = Bones::PersistedObject.find(action_name)
+    object = Bones::PersistedModel.find(action_name)
     instance_variable_set "@#{action_name}", object
   end
 
@@ -14,7 +14,7 @@ class Bones::WireframesController < ApplicationController
     end
 
     new_params.each_pair do |name, attributes|
-      Bones::PersistedObject.create(name, attributes)
+      Bones::PersistedModel.create(name, attributes)
     end
   end
 

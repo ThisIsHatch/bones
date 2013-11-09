@@ -1,13 +1,13 @@
 module Bones
 
-  # == Bones::PersistedObject
+  # == Bones::PersistedModel
   #
-  # <tt>Bones::PersistedObject</tt> lets you build wireframes with simpe
+  # <tt>Bones::PersistedModel</tt> lets you build wireframes with simpe
   # mock objects that are persisted across controller actions. The view
   # /app/views/bones/wireframes/create_event
   #
   # <h1>Create Event</h1>
-  # <%= form_for Bones::PersistedObject.new('Event'), url: 'event', method: 'get' do |f| %>
+  # <%= form_for Bones::PersistedModel.new('Event'), url: 'event', method: 'get' do |f| %>
   #   <%= f.text_field :description %>
   #   <%= f.text_field :starts_at %>
   #   <%= f.text_field :ends_at %>
@@ -31,10 +31,10 @@ module Bones
   # once the Event form has been submitted the object can be accesses accross all
   # subsequent wireframes so quite sofisticated flows can be buit.
   #
-  # Additionally <tt>Bones::PersistedObject</tt> will first attempt to use existing
+  # Additionally <tt>Bones::PersistedModel</tt> will first attempt to use existing
   # models so working versions of existing models can be seamlessly integrated into
   # the wireframes.
-  class PersistedObject
+  class PersistedModel
 
     # +new+ is like ActiveRecord's +new+ but when called attempts to find
     # an existing model with `name`, if no model (or persisted model) is
@@ -44,11 +44,11 @@ module Bones
     # class Vehicle < ActiveRecord::Base
     # end
     #
-    # Bones::PersistedObject.new('vehicle', wheels: 4, color: 'red')
+    # Bones::PersistedModel.new('vehicle', wheels: 4, color: 'red')
     #
     # builds a new instance of Vehicle, whereas
     #
-    # Bones::PersistedObject.new('car', wheels: 3, color: 'blue')
+    # Bones::PersistedModel.new('car', wheels: 3, color: 'blue')
     #
     # creates a new persisted model Car and builds a new instance of it.
     def self.new(name, attributes={})
@@ -63,11 +63,11 @@ module Bones
     # class Vehicle < ActiveRecord::Base
     # end
     #
-    # Bones::PersistedObject.create('vehicle', wheels: 4, color: 'red')
+    # Bones::PersistedModel.create('vehicle', wheels: 4, color: 'red')
     #
     # creates a new instance of Vehicle, whereas
     #
-    # Bones::PersistedObject.create('car', wheels: 3, color: 'blue')
+    # Bones::PersistedModel.create('car', wheels: 3, color: 'blue')
     #
     # creates a new persisted model Car and creates an instance of it.
     def self.create(name, params={})
@@ -79,11 +79,11 @@ module Bones
     # class Vehicle < ActiveRecord::Base
     # end
     #
-    # Bones::PersistedObject.find('vehicle')
+    # Bones::PersistedModel.find('vehicle')
     #
     # returns the last instance of the Vehicle model, whereas
     #
-    # Bones::PersistedObject.find('car')
+    # Bones::PersistedModel.find('car')
     #
     # returns the last instance of persisted model Car.
     def self.find(name)
@@ -95,12 +95,12 @@ module Bones
     # class Vehicle < ActiveRecord::Base
     # end
     #
-    # Bones::PersistedObject.find_or_create('vehicle', wheels: 4, color: 'red')
+    # Bones::PersistedModel.find_or_create('vehicle', wheels: 4, color: 'red')
     #
     # Creates an instance of the Vehicle model and
     #
-    # Bones::PersistedObject.find_or_create('vehicle', wheels: 4, color: 'red')
-    # vehicle = Bones::PersistedObject.find_or_create('vehicle', wheels: 3, color: 'blue')
+    # Bones::PersistedModel.find_or_create('vehicle', wheels: 4, color: 'red')
+    # vehicle = Bones::PersistedModel.find_or_create('vehicle', wheels: 3, color: 'blue')
     # vehicle.color # => 'red'
     # vehicle.wheels # => '4
     def self.find_or_create(name, params={})
