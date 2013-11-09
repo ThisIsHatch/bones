@@ -1,20 +1,110 @@
 module Bones
+
+  # == Bones::PersistedObject
+  #
+  # <tt>Bones::PersistedObject</tt> lets you build wireframes with simpe
+  # mock objects that are persisted across controller actions. The view
+  # /app/views/bones/wireframes/create_event
+  #
+  # <h1>Create Event</h1>
+  # <%= form_for Bones::PersistedObject.new('Event'), url: 'event', method: 'get' do |f| %>
+  #   <%= f.text_field :description %>
+  #   <%= f.text_field :starts_at %>
+  #   <%= f.text_field :ends_at %>
+  #   <%= f.submit %>
+  # <% end %>
+  #
+  # will build an new Event persisted model. When the form is submitted it will
+  # render the /app/views/bones/wireframes/event wireframe.
+  # The <tt>Bones::WireframesControler</tt> captures any properly formatted form fileds submitted
+  # via a GET action and creates persisted models from those submitted attributes. So the
+  # above 'create_event' form will send the parameters to the 'event' view (wireframe).
+
+  # When rendering the 'event' view <tt>Bones::WireframesControler</tt> will
+  # attempt to find a persisted model Event instance and populate @event with it.
+  # therefor when rendered /app/views/bones/wireframes/event will display the entered
+  # Event values submitted in the create_event view
+  #
+  # <h1><%= @event.description</h1>
+  # <p>Starts at <%= @event.starts_at %> and ends at <%= @event.ends_at %></p>
+  #
+  # once the Event form has been submitted the object can be accesses accross all
+  # subsequent wireframes so quite sofisticated flows can be buit.
+  #
+  # Additionally <tt>Bones::PersistedObject</tt> will first attempt to use existing
+  # models so working versions of existing models can be seamlessly integrated into
+  # the wireframes.
   class PersistedObject
 
-    def self.new(name, params={})
-      klass_for(name).new(params)
+    # +new+ is like ActiveRecord's +new+ but when called attempts to find
+    # an existing model with `name`, if no model (or persisted model) is
+    # found a persisted model is created. Once found the `attributes` are
+    # assigned to a new instance of the found class. For example
+    #
+    # class Vehicle < ActiveRecord::Base
+    # end
+    #
+    # Bones::PersistedObject.new('vehicle', wheels: 4, color: 'red')
+    #
+    # builds a new instance of Vehicle, whereas
+    #
+    # Bones::PersistedObject.new('car', wheels: 3, color: 'blue')
+    #
+    # creates a new persisted model Car and builds a new instance of it.
+    def self.new(name, attributes={})
+      klass_for(name).new(attributes)
     end
 
+    # +create+ is like ActiveRecord's +create+ but when called attempts to find
+    # an existing model with `name`, if no model (or persisted model) is
+    # found a persisted model is created. Once found a new instance of the found
+    # class is created with the given `attributes`. For example
+    #
+    # class Vehicle < ActiveRecord::Base
+    # end
+    #
+    # Bones::PersistedObject.create('vehicle', wheels: 4, color: 'red')
+    #
+    # creates a new instance of Vehicle, whereas
+    #
+    # Bones::PersistedObject.create('car', wheels: 3, color: 'blue')
+    #
+    # creates a new persisted model Car and creates an instance of it.
+    def self.create(name, params={})
+      klass_for(name).new(params).save(validate: false)
+    end
+
+    # Returns the first instance of the model or persisted model `name`
+    #
+    # class Vehicle < ActiveRecord::Base
+    # end
+    #
+    # Bones::PersistedObject.find('vehicle')
+    #
+    # returns the last instance of the Vehicle model, whereas
+    #
+    # Bones::PersistedObject.find('car')
+    #
+    # returns the last instance of persisted model Car.
+    def self.find(name)
+      klass_for(name).last
+    end
+
+    # Returns the first instance of the model or persisted model `name`
+    #
+    # class Vehicle < ActiveRecord::Base
+    # end
+    #
+    # Bones::PersistedObject.find_or_create('vehicle', wheels: 4, color: 'red')
+    #
+    # Creates an instance of the Vehicle model and
+    #
+    # Bones::PersistedObject.find_or_create('vehicle', wheels: 4, color: 'red')
+    # vehicle = Bones::PersistedObject.find_or_create('vehicle', wheels: 3, color: 'blue')
+    # vehicle.color # => 'red'
+    # vehicle.wheels # => '4
     def self.find_or_create(name, params={})
       find(name) || create(name, params)
-    end
-
-    def self.find(name)
-      klass_for(name).first
-    end
-
-    def self.create(name, params={})
-      klass_for(name).create(params)
     end
 
     def self.klass_for(name)
@@ -42,7 +132,7 @@ module Bones
         new(attributes).save
       end
 
-      def save
+      def save(args={})
         self.class.send :instance_variable_set, '@object', self
       end
 

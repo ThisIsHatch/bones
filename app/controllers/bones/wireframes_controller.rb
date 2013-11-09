@@ -1,6 +1,12 @@
 class Bones::WireframesController < ApplicationController
 
   before_filter :capture_persisted_object
+  before_filter :initialize_persisted_object
+
+  def initialize_persisted_object
+    object = Bones::PersistedObject.find(action_name)
+    instance_variable_set "@#{action_name}", object
+  end
 
   def capture_persisted_object
     new_params = params.dup.delete_if do |key, value|
