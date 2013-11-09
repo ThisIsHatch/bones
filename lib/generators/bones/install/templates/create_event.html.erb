@@ -1,0 +1,7 @@
+<h1>Create Event</h1>
+<%= simple_form_for Bones::PersistedModel.new('Event'), url: 'event', method: 'get' do |f| %>
+  <%= f.input :description %>
+  <%= f.input :starts_at %>
+  <%= f.input :ends_at %>
+  <%= f.submit %>
+<% end %>
