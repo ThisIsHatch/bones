@@ -1,0 +1,60 @@
+/*
+Text styles
+
+.t-fontExtraBold    - Extra bold
+.t-fontBold         - Bold
+.t-fontItalic       - Italic
+.t-fontDroidSerif   - Droid
+
+Styleguide 1.2.1.
+*/
+.t-fontExtraBold {
+  @include font-proxima-nova-extra-bold;
+}
+.t-fontBold {
+  @include font-proxima-nova-bold;
+}
+.t-fontItalic {
+  @include font-proxima-nova-regular-italic;
+}
+.t-fontDroidSerif {
+  @include font-droid-serif;
+}
+
+/*
+Text styles
+
+.t-transformUppercase    - Uppercase
+
+Styleguide 1.2.2.
+*/
+.t-transformUppercase {
+  text-transform: uppercase;
+}
+
+/*
+Text styles
+
+.t-colorWhite - White
+.t-colorLightGrey - Light Grey
+.t-colorGrey - Dark Grey
+.t-colorGreen  - Green
+
+Styleguide 1.2.3.
+*/
+.t-colorWhite {
+  color: $white;
+  a {
+    text-decoration: none;
+    @include link-colors($white, $white, $white, $white, $white);
+  }
+}
+.t-colorLightGrey {
+  color: $lightGrey;
+}
+.t-colorGreen {
+  color: $green;
+}
+.t-colorGrey {
+  color: $mediumGrey;
+}

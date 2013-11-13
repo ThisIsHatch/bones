@@ -1,0 +1,108 @@
+//    # How to do grids
+//
+//    ## Notation
+//
+//    If it makes sense to call a grid by a descriptive name, do so
+//
+//    g-halves
+//    g-thirds
+//    g-quarters
+//
+//    If not, name it semantically
+//
+//    g-homepage
+//
+//    The div surrounding a set of columns, to be named thus - if needed.
+//
+//      <div class="g-halves"></div>
+//
+//    If not needed, leave it as a title for the remaining columns.
+//
+//      <div></div>
+//
+//    Each column is a part of a grid, so uses the __ separator.
+//
+//    g-halves__column
+//    g-thirds__column
+//
+//      <div class="g-halves">
+//        <div class="g-halves__column"></div>
+//        <div class="g-halves__column"></div>
+//      </div>
+//
+//    The CSS for the above:
+//
+//      .g-halves__column {
+//        float: left;
+//        width: 50%;
+//      }
+//
+//    In more complex situations where margins might need to be different, use modifiers as well
+//
+//    g-halves__column--1
+//    g-halves__column--2
+//
+//      <div class="g-halves">
+//        <div class="g-halves__column g-halves__column--1"></div>
+//        <div class="g-halves__column g-halves__column--2"></div>
+//      </div>
+//
+//    The CSS:
+//
+//      .g-halves__column {
+//        float: left;
+//        width: 49%;
+//      }
+//
+//      .g-halves__column--1 {
+//        margin-right: 0.5%;
+//      }
+//      .g-halves__column--2 {
+//        margin-left: 0.5%;
+//      }
+//
+//    So on and so forth.
+//
+
+// Some get you started grids
+.g-baseGrid {
+  width: 100%;
+  @extend .u-clearfix;
+}
+
+// Set on any grid item
+.g-baseGrid__column {
+  float: left;
+  min-height: 1px;
+}
+// Sets item to be quarter
+.g-baseGrid__column--quarter {
+  width: 25%;
+}
+.g-baseGrid__column--half {
+  width: 50%;
+}
+
+// Thirds grid
+.g-thirds__column1 {
+  width: 66%;
+  margin-right: 1%;
+}
+.g-thirds__column2 {
+  width: 33%;
+}
+
+// Grid for nav
+.g-navigation__column1 {
+  width: 20%;
+  margin-right: 5%;
+}
+.g-navigation__column2 {
+  width: 75%;
+}
+
+// A single block set in slightly
+.g-indentedGrid {
+  width: 90%;
+  margin: 0 auto;
+}

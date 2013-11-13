@@ -1,0 +1,56 @@
+$base-font-size: 16px;
+$base-line-height: 26px;
+@include establish-baseline;
+
+$baseFontFamily: Arial, sans-serif;
+
+$font-family-proxima-nova: "proxima-nova", $baseFontFamily;
+
+@mixin font-proxima-nova-regular {
+  font-family: $font-family-proxima-nova;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin font-proxima-nova-regular-italic {
+  font-family: $font-family-proxima-nova;
+  font-weight: 400;
+  font-style: italic;
+}
+@mixin font-proxima-nova-bold {
+  font-family: $font-family-proxima-nova;
+  font-weight: 700;
+  font-style: normal;
+}
+@mixin font-proxima-nova-extra-bold {
+  font-family: $font-family-proxima-nova;
+  font-weight: 800;
+  font-style: normal;
+}
+@mixin font-droid-serif {
+  font-family: "droid-serif", $baseFontFamily;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 
+
+Set an even base
+
+Styleguide 1.1.
+*/ 
+p, h1, h2, h3, h4, h5, h6, blockquote, ul li, ol li, strong, em {
+  font-size: 1em;
+  margin-top: 0;
+  @include margin-trailer(1);
+  color: $black;
+}
+p, h1, h2, h3, h4, h5, h6, blockquote, ul li, ol li {
+  @include font-proxima-nova-regular;
+}
+strong {
+  @include font-proxima-nova-bold;
+}
+
+em {
+  @include font-proxima-nova-regular-italic;
+}

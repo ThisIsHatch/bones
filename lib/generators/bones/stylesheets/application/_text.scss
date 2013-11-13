@@ -1,0 +1,10 @@
+/*
+    As per grids, application specific but we could generate an example set for the dev
+    to start from. Again a well commented file to get them going. I would be inclined to
+    split defaults into fonts and then put the remainder into styles as that's what they are.
+    Sizes could almost be a function that generates those sizes as it's very unform e.g.
+    text-sizes(13px, 16px, 22px, 30px)
+*/
+@import "text/defaults";
+@import "text/styles";
+@import "text/sizes";

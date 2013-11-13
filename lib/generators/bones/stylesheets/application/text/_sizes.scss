@@ -1,0 +1,36 @@
+/*
+Text sizes
+
+These will automatically fall into vertical rhythm with appropriate line heights
+
+.t-size13  - 13px
+.t-size16  - 16px
+.t-size22  - 22px
+.t-size30  - 30px
+.t-size40  - 40px
+.t-size45  - 45px
+.t-size58  - 58px
+
+Styleguide 1.3.1
+*/
+.t-size13 {
+  @include adjust-font-size-to(13px);
+}
+.t-size16 {
+  @include adjust-font-size-to(16px);
+}
+.t-size22 {
+  @include adjust-font-size-to(22px);
+}
+.t-size30 {
+  @include adjust-font-size-to(30px);
+}
+.t-size40 {
+  @include adjust-font-size-to(40px);
+}
+.t-size45 {
+  @include adjust-font-size-to(45px);
+}
+.t-size58 {
+  @include adjust-font-size-to(58px);
+}

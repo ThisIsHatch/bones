@@ -1,0 +1,17 @@
+/*
+Image block
+
+A block with background image set to cover, built to work on IE7+.
+Sample image included, add your own module class which sets a custom background-size-cover image
+
+Styleguide 2.1.
+*/
+.c-imageBlock {
+  @extend .u-clearfix;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.c-imageBlock--sampleImage {
+  @include background-size-cover('city-header.jpg');
+}

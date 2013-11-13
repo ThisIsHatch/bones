@@ -1,0 +1,14 @@
+/*
+Inline block underlined
+
+Displays an item inline with an underline, preserving all other margins 
+
+Styleguide 2.3.
+*/
+.c-inlineBlockUnderlined {
+  display: inline-block;
+  @include trailing-border(1px, 0);
+}
+.ie7 .c-inlineBlockUnderlined {
+  display: block;
+}

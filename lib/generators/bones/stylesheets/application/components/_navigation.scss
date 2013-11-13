@@ -1,0 +1,17 @@
+/*
+Navigation
+
+Left floated, standard
+
+Styleguide 2.5.
+*/
+.c-navigation {
+  @extend .u-resetList;
+  display: inline-block;
+  *display: inline;
+}
+.c-navigation__item {
+  float: left;
+  margin-bottom: 0;
+  padding-left: rhythm(1);
+}
