@@ -2,10 +2,10 @@
 //@import "compass/typography";
 
 //  Or pick from the typography modules you need
-//@import "compass/typography/links";
+@import "compass/typography/links"; // Used by application/text/styles
 //@import "compass/typography/lists";
 //@import "compass/typography/text";
-//@import "compass/typography/vertical_rhythm";
+@import "compass/typography/vertical_rhythm"; // used by application/text/defaults
 
 //  Import the whole CSS3 module
 //@import "compass/css3";
