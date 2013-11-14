@@ -13,6 +13,7 @@ module Bones
         copy_file 'create_event.html.erb', 'app/views/bones/wireframes/create_event.html.erb'
         copy_file 'event.html.erb', 'app/views/bones/wireframes/event.html.erb'
         copy_file 'components.html.erb', 'app/views/bones/components/index.html.erb'
+        directory 'stylesheets', 'app/assets/stylesheets'
       end
     end
   end
