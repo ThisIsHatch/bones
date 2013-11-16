@@ -1,3 +1,3 @@
 jQuery(document).ready(function(){
-  $('a[href=#incomplete]').addClass('incomplete');
+  $('a[href=#incomplete], a[href=""]').addClass('incomplete');
 });
