@@ -13,5 +13,5 @@ Styleguide 2.1.
   position: relative;
 }
 .c-imageBlock--sampleImage {
-  @include background-size-cover('city-header.jpg');
+  @include background-size-cover('http://placehold.it/350x50&text=Background%20Image');
 }
