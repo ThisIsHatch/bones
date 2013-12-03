@@ -5,15 +5,27 @@ module Bones
     include ActiveModel::Validations
 
     attr_accessor :id
-    attr_accessor :email
-    attr_accessor :password
+
     attr_accessor :required
-    attr_accessor :optional
-    attr_accessor :disabled
     attr_accessor :error
+    attr_accessor :hint
+    attr_accessor :disabled
     attr_accessor :no_label
-    attr_accessor :text_area
+
     attr_accessor :check_box
+    attr_accessor :string
+    attr_accessor :email
+    attr_accessor :url
+    attr_accessor :tel
+    attr_accessor :password
+    attr_accessor :search
+    attr_accessor :text_area
+    attr_accessor :file
+    attr_accessor :integer
+    attr_accessor :range
+    attr_accessor :datetime
+    attr_accessor :date
+    attr_accessor :time
     attr_accessor :radio
     attr_accessor :radio_collection
     attr_accessor :check_box_collection

@@ -156,20 +156,34 @@
         <h2>Forms</h2>
       <% if defined?(SimpleForm) %>
 
+        <h3>Elements with </h3>
         <%= simple_form_for Bones::Example.new, :url => '#' do |f| %>
         <fieldset>
-          <legend>The example fields generated in the preferred way of the dev team</legend>
-          <%= f.input :optional, :hint => 'A hint to the user about this field' %>
+          <legend>The example field states in the format rendered by simple_form</legend>
           <%= f.input :required %>
-          <%= f.input :disabled, :disabled => true %>
           <%= f.input :error %>
-          <%= f.input :password %>
+          <%= f.input :hint, :hint => 'A hint to the user about this field' %>
+          <%= f.input :disabled, :disabled => true %>
           <%= f.input :no_label, :label => false %>
+        </fieldset>
+        <fieldset>
+          <legend>The example field types in the format rendered by simple_form</legend>
+          <%= f.input :check_box, as: 'boolean' %>
+          <%= f.input :email, as: 'email' %>
+          <%= f.input :url, as: 'url' %>
+          <%= f.input :tel, as: 'tel' %>
+          <%= f.input :password, as: 'password' %>
+          <%= f.input :search, as: 'search' %>
           <%= f.input :text_area, :as => 'text' %>
-          <%= f.input :check_box, :as => 'boolean' %>
-          <%= f.input :radio, :as => 'radio' %>
+          <%= f.input :file, as: 'file' %>
+          <%= f.input :integer, as: 'integer' %>
+          <%= f.input :range, as: 'range' %>
+          <%= f.input :datetime, as: 'datetime' %>
+          <%= f.input :date, as: 'date' %>
+          <%= f.input :time, as: 'time' %>
+          <%= f.input :radio, :as => 'radio_buttons' %>
           <%= f.input :select_collection, :collection => 10..15, :prompt => 'Choose something' %>
-          <%= f.input :radio_collection, :collection => 10..15, :as => 'radio', :hint => 'Some hint about these radios' %>
+          <%= f.input :radio_collection, :collection => 10..15, :as => 'radio_buttons', :hint => 'Some hint about these radios' %>
           <%= f.input :check_box_collection, :collection => %w(this that the_other), :as => 'check_boxes' %>
           <%= f.button :submit %>
         </fieldset>
