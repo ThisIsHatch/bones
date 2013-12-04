@@ -1,5 +1,9 @@
 require "bones/version"
 
 module Bones
-  require 'bones/engine' if defined?(Rails)
+  if defined?(Rails)
+    require 'bones/engine'
+    require 'bones/railtie' if Rails::VERSION::MAJOR >= 3
+  end
 end
+
