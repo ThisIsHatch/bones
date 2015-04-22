@@ -13,8 +13,8 @@ module Bones
         copy_file 'create_event.html.erb', 'app/views/bones/wireframes/create_event.html.erb'
         copy_file 'event.html.erb', 'app/views/bones/wireframes/event.html.erb'
         copy_file 'components.html.erb', 'app/views/bones/components/index.html.erb'
-        directory 'stylesheets', 'app/assets/stylesheets'
-        gem 'compass-rails', '~>2.0.alpha'
+        # directory 'stylesheets', 'app/assets/stylesheets'
+        gem 'compass-rails'
         gem 'compass-normalize'
       end
     end
