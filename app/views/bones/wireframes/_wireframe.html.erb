@@ -1,0 +1,4 @@
+<% base_name = File.basename(wireframe, '.html.erb') %>
+<li>
+  <%= link_to(base_name.humanize, File.join('wireframes', base_name)) %>
+</li>

@@ -1,0 +1,7 @@
+<h1>Wireframes</h1>
+
+<% wireframes = Dir.glob(File.join(view_paths.first.to_path, controller_path, '*.html.erb')) %>
+
+<ul>
+  <%= render partial: 'wireframe', collection: wireframes %>
+</ul>
