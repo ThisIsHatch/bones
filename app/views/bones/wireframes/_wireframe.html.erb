@@ -1,4 +1,4 @@
 <% base_name = File.basename(wireframe, '.html.erb') %>
 <li>
-  <%= link_to(base_name.humanize, base_name) %>
+  <%= link_to(base_name.humanize, bones.wireframe_path(base_name)) %>
 </li>
