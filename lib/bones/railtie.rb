@@ -10,7 +10,8 @@ module Bones
 
     config.to_prepare do
       i18n_path = I18n.load_path
-      app_path = Dir[File.join(Rails.root, 'config', 'locales', '**/*.yml')]
+      app_path_glob = File.join(Rails.root, 'config', 'locales', '**/*.yml')
+      app_path = Dir[app_path_glob]
       new_path = (i18n_path | app_path).keep_if { |file| File.exists?(file) }
       I18n.load_path = new_path
       I18n.reload!
