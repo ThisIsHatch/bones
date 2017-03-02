@@ -1,3 +1,11 @@
+# A fragile engine for rendering wireframes and components
+This is a very basic rails engine which mounts a couple of routes;
+
+* **/wireframes** generates an index of everything in app/views/wireframes
+* **/wireframes/xxx** will render page app/views/wireframes/xxx.html.erb in the context of app/views/layouts/application.html.erb
+* **/compontents** will render app/views/components/index.html.erb and is intended to be a very simple styleguide of components in the app.
+
+This is quite old stuff and dates back ot when OO CSS was just getting born and BEM was a twinkle in somebody's eye.
 
 ## Getting into Object Oriented CSS
 
